@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Jenik Gajera</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Inter:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: #0c0c0c;
+      color: #fff;
+      font-family: 'Inter', sans-serif;
+      overflow-x: hidden;
+    }
+
+    .wrapper {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .top-bar, .bottom-bar {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      padding: 20px 5vw;
+      font-size: 0.8rem;
+      letter-spacing: 1px;
+      font-weight: 600;
+      position: relative;
+    }
+
+    .top-bar .center {
+      position: absolute;
+      top: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .coords, #clock {
+      white-space: nowrap;
+    }
+
+    @media (max-width: 768px) {
+      .coords, #clock {
+        display: none;
+      }
+    }
+
+    .content {
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 40px 20px;
+      gap: 40px;
+    }
+
+    .graphic-box {
+      width: 300px;
+      height: 300px;
+      border: 1px solid #555;
+      position: relative;
+      overflow: hidden;
+    }
+
+    canvas {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+
+    .v-axis, .h-axis {
+      position: absolute;
+      background-color: #666;
+    }
+
+    .v-axis {
+      width: 1px;
+      height: 100%;
+      left: 50%;
+      animation: moveX 6s ease-in-out infinite;
+    }
+
+    .h-axis {
+      height: 1px;
+      width: 100%;
+      top: 50%;
+      animation: moveY 6s ease-in-out infinite;
+    }
+
+    @keyframes moveX {
+      0%, 100% { left: 50%; }
+      50% { left: 53%; }
+    }
+
+    @keyframes moveY {
+      0%, 100% { top: 50%; }
+      50% { top: 47%; }
+    }
+
+    .name {
+      text-align: center;
+    }
+
+    .jenik {
+      font-family: 'Playfair Display', serif;
+      font-size: 5rem;
+      font-weight: 600;
+      -webkit-text-stroke: 1px white;
+      color: transparent;
+    }
+
+    .gajera {
+      font-size: 2.5rem;
+      font-weight: 400;
+      color: #ccc;
+    }
+
+    .timeline {
+      width: 90%;
+      margin: 40px auto 20px;
+      position: relative;
+      border-top: 2px solid #888;
+      height: 100px;
+    }
+
+    .tick {
+      position: absolute;
+      top: -5px;
+      width: 2px;
+      height: 10px;
+      background: #fff;
+    }
+
+    .milestone {
+      position: absolute;
+      top: 20px;
+      color: #ccc;
+      font-size: 0.9rem;
+      transform: translateX(-50%);
+      text-align: center;
+    }
+
+    .about-section {
+      padding: 40px 20px;
+      max-width: 800px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .about-section h2 {
+      font-size: 2rem;
+      margin-bottom: 20px;
+      color: #eee;
+    }
+
+    .about-section p {
+      font-size: 1rem;
+      line-height: 1.6;
+      color: #ccc;
+    }
+
+    .skills-section {
+      padding: 20px 20px 60px;
+      max-width: 800px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .skills-section h2 {
+      font-size: 2rem;
+      margin-bottom: 20px;
+      color: #eee;
+    }
+
+    .skills-section ul {
+      list-style: none;
+      color: #ccc;
+      font-size: 1rem;
+      line-height: 1.8;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+    <div class="top-bar">
+      <div class="coords">17° 23′ 13.2″ N 78° 28′ 16.2″ E</div>
+      <div class="center">DESIGN INTELLIGENCE</div>
+      <div id="clock">--:--:--</div>
+    </div>
+
+    <div class="content">
+      <div class="graphic-box">
+        <canvas id="lineCanvas"></canvas>
+        <div class="v-axis"></div>
+        <div class="h-axis"></div>
+      </div>
+
+      <div class="name">
+        <div class="jenik">Jenik</div>
+        <div class="gajera">Gajera</div>
+      </div>
+
+      <div class="bottom-bar">
+        <div>SOCIAL</div>
+        <div>SCROLL</div>
+        <div>MENU</div>
+      </div>
+    </div>
+
+    <div class="timeline">
+      <div class="tick" style="left: 5%"></div>
+      <div class="milestone" style="left: 5%">2012<br>1st Grade</div>
+
+      <div class="tick" style="left: 25%"></div>
+      <div class="milestone" style="left: 25%">6th Grade<br>School Change</div>
+
+      <div class="tick" style="left: 50%"></div>
+      <div class="milestone" style="left: 50%">10th Grade</div>
+
+      <div class="tick" style="left: 75%"></div>
+      <div class="milestone" style="left: 75%">12th Grade</div>
+
+      <div class="tick" style="left: 95%"></div>
+      <div class="milestone" style="left: 95%">IIITH<br>1st Year</div>
+    </div>
+
+    <div class="about-section">
+      <h2>About Me</h2>
+      <p>
+        Hi, I'm Jenik Gajera. I love combining design with intelligence — whether it's in the form of creative code, thoughtful interfaces, or cool animations. I'm currently studying at IIIT Hyderabad, with a curiosity that spans math, visuals, and programming. This site is a little playground of mine.
+      </p>
+    </div>
+
+    <div class="skills-section">
+      <h2>Technical Skills</h2>
+      <ul>
+        <li>HTML, CSS, JavaScript</li>
+        <li>Python, C++</li>
+        <li>Git, GitHub</li>
+        <li>UI/UX Design Basics</li>
+        <li>Creative Coding with Canvas</li>
+      </ul>
+    </div>
+  </div>
+
+  <script>
+    function updateClock() {
+      const now = new Date();
+      const timeString = now.toLocaleTimeString([], { hour12: false });
+      document.getElementById('clock').textContent = timeString;
+    }
+    setInterval(updateClock, 1000);
+    updateClock();
+    
+    const canvas = document.getElementById("lineCanvas");
+    const ctx = canvas.getContext("2d");
+    canvas.width = canvas.offsetWidth;
+    canvas.height = canvas.offsetHeight;
+    
+    let t = 0;
+    function drawFunction() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+    
+      ctx.beginPath();
+      ctx.strokeStyle = "#66f";
+      ctx.lineWidth = 1;
+    
+      for (let x = 0; x < canvas.width; x++) {
+        let c = (x+t)%100 - 50;
+        if(c == 0)  c = 0.0001;
+        const y = (canvas.height / 2) - 200*Math.sin(0.25*c)/c;
+        x === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
+      }
+    
+      ctx.stroke();
+      t += 1;
+      requestAnimationFrame(drawFunction);
+    }
+    
+    drawFunction();
+    
+  </script>
+</body>
+</html>
