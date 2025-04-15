@@ -2,199 +2,25 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Jenik Gajera</title>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Inter:wght@400;700&display=swap" rel="stylesheet">
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    body {
-      background-color: #0c0c0c;
-      color: #fff;
-      font-family: 'Inter', sans-serif;
-      overflow-x: hidden;
-    }
-
-    .wrapper {
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-    }
-
-    .top-bar, .bottom-bar {
-      width: 100%;
-      display: flex;
-      justify-content: space-between;
-      padding: 20px 5vw;
-      font-size: 0.8rem;
-      letter-spacing: 1px;
-      font-weight: 600;
-      position: relative;
-    }
-
-    .top-bar .center {
-      position: absolute;
-      top: 20px;
-      left: 50%;
-      transform: translateX(-50%);
-    }
-
-    .coords, #clock {
-      white-space: nowrap;
-    }
-
-    @media (max-width: 768px) {
-      .coords, #clock {
-        display: none;
-      }
-    }
-
-    .content {
-      flex-grow: 1;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      padding: 40px 20px;
-      gap: 40px;
-    }
-
-    .graphic-box {
-      width: 300px;
-      height: 300px;
-      border: 1px solid #555;
-      position: relative;
-      overflow: hidden;
-    }
-
-    canvas {
-      width: 100%;
-      height: 100%;
-      display: block;
-    }
-
-    .v-axis, .h-axis {
-      position: absolute;
-      background-color: #666;
-    }
-
-    .v-axis {
-      width: 1px;
-      height: 100%;
-      left: 50%;
-      animation: moveX 6s ease-in-out infinite;
-    }
-
-    .h-axis {
-      height: 1px;
-      width: 100%;
-      top: 50%;
-      animation: moveY 6s ease-in-out infinite;
-    }
-
-    @keyframes moveX {
-      0%, 100% { left: 50%; }
-      50% { left: 53%; }
-    }
-
-    @keyframes moveY {
-      0%, 100% { top: 50%; }
-      50% { top: 47%; }
-    }
-
-    .name {
-      text-align: center;
-    }
-
-    .jenik {
-      font-family: 'Playfair Display', serif;
-      font-size: 5rem;
-      font-weight: 600;
-      -webkit-text-stroke: 1px white;
-      color: transparent;
-    }
-
-    .gajera {
-      font-size: 2.5rem;
-      font-weight: 400;
-      color: #ccc;
-    }
-
-    .timeline {
-      width: 90%;
-      margin: 40px auto 20px;
-      position: relative;
-      border-top: 2px solid #888;
-      height: 100px;
-    }
-
-    .tick {
-      position: absolute;
-      top: -5px;
-      width: 2px;
-      height: 10px;
-      background: #fff;
-    }
-
-    .milestone {
-      position: absolute;
-      top: 20px;
-      color: #ccc;
-      font-size: 0.9rem;
-      transform: translateX(-50%);
-      text-align: center;
-    }
-
-    .about-section {
-      padding: 40px 20px;
-      max-width: 800px;
-      margin: 0 auto;
-      text-align: center;
-    }
-
-    .about-section h2 {
-      font-size: 2rem;
-      margin-bottom: 20px;
-      color: #eee;
-    }
-
-    .about-section p {
-      font-size: 1rem;
-      line-height: 1.6;
-      color: #ccc;
-    }
-
-    .skills-section {
-      padding: 20px 20px 60px;
-      max-width: 800px;
-      margin: 0 auto;
-      text-align: center;
-    }
-
-    .skills-section h2 {
-      font-size: 2rem;
-      margin-bottom: 20px;
-      color: #eee;
-    }
-
-    .skills-section ul {
-      list-style: none;
-      color: #ccc;
-      font-size: 1rem;
-      line-height: 1.8;
-    }
-  </style>
+  <!-- Fonts: Playfair for name, Inter for text, Poppins for big headings -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Inter:wght@400;700&family=Poppins:wght@700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <div class="wrapper">
     <div class="top-bar">
       <div class="coords">17° 23′ 13.2″ N 78° 28′ 16.2″ E</div>
-      <div class="center">DESIGN INTELLIGENCE</div>
+      <div class="center">SEDAHOO</div>
       <div id="clock">--:--:--</div>
+    </div>
+
+    <!-- Sticky Navigation Bar - Shows when scrolling past the hero section -->
+    <div class="sticky-bar" id="stickyBar">
+      <div>PORTFOLIO</div>
+      <div class="center">SEDAHOO</div>
+      <div>PHOTOGRAPHY</div>
     </div>
 
     <div class="content">
@@ -203,91 +29,403 @@
         <div class="v-axis"></div>
         <div class="h-axis"></div>
       </div>
-
       <div class="name">
         <div class="jenik">Jenik</div>
         <div class="gajera">Gajera</div>
       </div>
-
       <div class="bottom-bar">
-        <div>SOCIAL</div>
-        <div>SCROLL</div>
-        <div>MENU</div>
+        <div>PORTFOLIO</div>
+        <div>PHOTOGRAPHY</div>
       </div>
     </div>
 
-    <div class="timeline">
-      <div class="tick" style="left: 5%"></div>
-      <div class="milestone" style="left: 5%">2012<br>1st Grade</div>
+    <!-- Fixed About Me Section -->
+    <section class="about-section">
+      <div class="about-heading">
+        <h2>About Me</h2>
+      </div>
+      <div class="about-text">
+        <p>
+          I'm <span class="accent">Jenik Gajera</span>—a creative coder who turns math into motion,
+          pixels into play, and ideas into interactive experiences. Whether I'm sketching functions
+          on canvas or designing thoughtful interfaces, I keep it clean, intentional, and alive.
+        </p>
+        <p>
+          Currently exploring new algorithms at IIIT‑Hyderabad and capturing life through my lens.
+          This site is my playground—dive in, tinker, and connect!
+        </p>
+      </div>
+    </section>
+    
+    <!-- Education Section - New -->
+    <section class="education-section">
+      <div class="education-heading">
+        <h2>Education</h2>
+      </div>
+      <div class="education-timeline">
+        <div class="education-item">
+          <div class="education-year">2024 - Present</div>
+          <div class="education-degree">B.Tech in Computer Science and Engineering</div>
+          <div class="education-institution">International Institute of Information Technology, Hyderabad</div>
+          <div class="education-details">
+            Currently pursuing my bachelor's degree with a focus on algorithms and creative computing.
+          </div>
+        </div>
+        
+        <div class="education-item">
+          <div class="education-year">2024</div>
+          <div class="education-degree">Higher Secondary Education (Class 12)</div>
+          <div class="education-institution">Central Board of Secondary Education</div>
+          <div class="education-details">
+            Completed with excellent academic standing and active participation in coding competitions.
+          </div>
+        </div>
+      </div>
+    </section>
 
-      <div class="tick" style="left: 25%"></div>
-      <div class="milestone" style="left: 25%">6th Grade<br>School Change</div>
+    <!-- Technical Skills Section - Modified with expertise levels -->
+    <section class="skills-section" >
+      <div class="skills-heading">
+        <h2>Technical Skills</h2>
+      </div>
+      
+      <div class="expertise-container">
+        <!-- Expert Level -->
+        <div class="expertise-level">
+          <h3 class="expertise-title">Expert</h3>
+          <div class="skills-grid">
+            <div class="skill-category">
+              <h3>Development</h3>
+              <ul>
+                <li>HTML5 & CSS3</li>
+                <li>JavaScript (ES6+)</li>
+                <li>Canvas Animation</li>
+              </ul>
+            </div>
+            
+            <div class="skill-category">
+              <h3>Creative</h3>
+              <ul>
+                <li>UI/UX Design</li>
+                <li>Photography</li>
+                <li>Visual Composition</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Familiar Level -->
+        <div class="expertise-level">
+          <h3 class="expertise-title">Familiar</h3>
+          <div class="skills-grid">
+            <div class="skill-category">
+              <h3>Programming</h3>
+              <ul>
+                <li>Python</li>
+                <li>C++</li>
+                <li>Data Structures</li>
+              </ul>
+            </div>
+            
+            <div class="skill-category">
+              <h3>Web Technologies</h3>
+              <ul>
+                <li>React.js</li>
+                <li>Node.js</li>
+                <li>Git & GitHub</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Learning Level -->
+        <div class="expertise-level">
+          <h3 class="expertise-title">Learning</h3>
+          <div class="skills-grid">
+            <div class="skill-category">
+              <h3>Advanced Topics</h3>
+              <ul>
+                <li>Machine Learning</li>
+                <li>Cloud Computing</li>
+                <li>Advanced Algorithms</li>
+              </ul>
+            </div>
+            
+            <div class="skill-category">
+              <h3>Tools & Frameworks</h3>
+              <ul>
+                <li>TensorFlow</li>
+                <li>Docker</li>
+                <li>WebGL</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-      <div class="tick" style="left: 50%"></div>
-      <div class="milestone" style="left: 50%">10th Grade</div>
+    <section class="photos-section">
+      <div class="photos-heading">
+        <h2>My Photos</h2>
+      </div>
+      <div class="photos-grid">
+        <div class="photo-item">
+          <img src="photo1.jpeg" alt="Photo 1" />
+        </div>
+        <div class="photo-item">
+          <img src="photo2.PNG" alt="Photo 2" />
+        </div>
+        <div class="photo-item">
+          <img src="photo3.jpg" alt="Photo 3" />
+        </div>
+      </div>
+    </section>
 
-      <div class="tick" style="left: 75%"></div>
-      <div class="milestone" style="left: 75%">12th Grade</div>
-
-      <div class="tick" style="left: 95%"></div>
-      <div class="milestone" style="left: 95%">IIITH<br>1st Year</div>
-    </div>
-
-    <div class="about-section">
-      <h2>About Me</h2>
-      <p>
-        Hi, I'm Jenik Gajera. I love combining design with intelligence — whether it's in the form of creative code, thoughtful interfaces, or cool animations. I'm currently studying at IIIT Hyderabad, with a curiosity that spans math, visuals, and programming. This site is a little playground of mine.
-      </p>
-    </div>
-
-    <div class="skills-section">
-      <h2>Technical Skills</h2>
-      <ul>
-        <li>HTML, CSS, JavaScript</li>
-        <li>Python, C++</li>
-        <li>Git, GitHub</li>
-        <li>UI/UX Design Basics</li>
-        <li>Creative Coding with Canvas</li>
-      </ul>
-    </div>
+    <!-- Email Contact Section with CV Download -->
+    <section class="contact-section">
+      <div class="contact-heading">
+        <h2>Get In Touch</h2>
+      </div>
+      <div class="email-box" id="emailCopy">
+        <span class="email-address">jenik.gajera@research.iiit.ac.in</span>
+        <span class="email-copy">COPY</span>
+      </div>
+      
+      <!-- CV Download Button -->
+      <a href="Jenik_Gajera_Resume.pdf" class="cv-download">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+          <polyline points="7 10 12 15 17 10"></polyline>
+          <line x1="12" y1="15" x2="12" y2="3"></line>
+        </svg>
+        DOWNLOAD CV
+      </a>
+      
+      <div class="copy-notification" id="copyNotification">Email copied to clipboard!</div>
+    </section>
   </div>
 
+  <!-- Social Footer -->
+  <footer class="social-footer" id="stickyBar">
+    <div class="footer-content">
+      <div class="social-links">
+        <a href="https://github.com/Sedahoo" target="_blank" class="social-link">
+          <svg class="social-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+          </svg>
+          GitHub
+        </a>
+        <a href="https://www.instagram.com/jenik_gajera" target="_blank" class="social-link">
+          <svg class="social-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+          </svg>
+          Instagram
+        </a>
+        <a href="https://www.linkedin.com/in/jenik-gajera-9a889a338/" target="_blank" class="social-link">
+          <svg class="social-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+            <rect x="2" y="9" width="4" height="12"></rect>
+            <circle cx="4" cy="4" r="2"></circle>
+          </svg>
+          LinkedIn
+        </a>
+        <a href="https://x.com/JenikGajera1" target="_blank" class="social-link">
+          <svg class="social-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path>
+          </svg>
+          Twitter
+        </a>
+      </div>
+      <div class="copyright">© 2025 Jenik Gajera — All Rights Reserved</div>
+    </div>
+  </footer>
+
   <script>
+    // Clock
     function updateClock() {
-      const now = new Date();
-      const timeString = now.toLocaleTimeString([], { hour12: false });
-      document.getElementById('clock').textContent = timeString;
+      document.getElementById('clock').textContent =
+        new Date().toLocaleTimeString([], {hour12:false});
     }
-    setInterval(updateClock, 1000);
+    setInterval(updateClock,1000);
     updateClock();
-    
-    const canvas = document.getElementById("lineCanvas");
-    const ctx = canvas.getContext("2d");
+
+    // Canvas animation
+    const canvas = document.getElementById("lineCanvas"),
+          ctx = canvas.getContext("2d");
     canvas.width = canvas.offsetWidth;
     canvas.height = canvas.offsetHeight;
-    
     let t = 0;
-    function drawFunction() {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-    
+    function drawFunction(){
+      ctx.clearRect(0,0,canvas.width,canvas.height);
       ctx.beginPath();
-      ctx.strokeStyle = "#66f";
-      ctx.lineWidth = 1;
-    
-      for (let x = 0; x < canvas.width; x++) {
-        let c = (x+t)%100 - 50;
-        if(c == 0)  c = 0.0001;
-        const y = (canvas.height / 2) - 200*Math.sin(0.25*c)/c;
-        x === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
+      ctx.strokeStyle="#66f";
+      ctx.lineWidth=1;
+      for(let x=0;x<canvas.width;x++){
+        let c=(x+t)%100-50;
+        if(c===0) c=0.0001;
+        const y=(canvas.height/2)-200*Math.sin(0.25*c)/c;
+        x===0?ctx.moveTo(x,y):ctx.lineTo(x,y);
       }
-    
       ctx.stroke();
-      t += 1;
+      t++;
       requestAnimationFrame(drawFunction);
     }
-    
     drawFunction();
     
+    // Email copy functionality
+    document.getElementById('emailCopy').addEventListener('click', function() {
+      const emailText = document.querySelector('.email-address').textContent;
+      navigator.clipboard.writeText(emailText).then(() => {
+        const notification = document.getElementById('copyNotification');
+        notification.style.transform = 'translateX(-50%) translateY(0)';
+        notification.style.opacity = '1';
+        
+        setTimeout(() => {
+          notification.style.transform = 'translateX(-50%) translateY(100px)';
+          notification.style.opacity = '0';
+        }, 2000);
+      });
+    });
+    
+    // Sticky nav bar functionality
+    window.addEventListener('scroll', function() {
+      const stickyBar = document.getElementById('stickyBar');
+      const contentSection = document.querySelector('.content');
+      
+      // Show sticky bar after scrolling past the hero section
+      if (window.scrollY > contentSection.offsetHeight - 100) {
+        stickyBar.classList.add('visible');
+      } else {
+        stickyBar.classList.remove('visible');
+      }
+    });
+    
+    // Add scroll reveal animations
+    window.addEventListener('DOMContentLoaded', () => {
+      const sections = document.querySelectorAll('section');
+      
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+          }
+        });
+      }, { threshold: 0.1 });
+      
+      sections.forEach(section => {
+        section.style.opacity = '0';
+        section.style.transform = 'translateY(30px)';
+        section.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+        observer.observe(section);
+      });
+    });
   </script>
+
+  <script>
+    // Helper to get event type (text, image, button, etc.)
+    function getEventObjectType(target) {
+      if (target.tagName === 'IMG') return 'image';
+      if (target.tagName === 'A') return 'link';
+      if (target.tagName === 'BUTTON') return 'button';
+      if (target.tagName === 'INPUT' || target.tagName === 'TEXTAREA') return 'text input';
+      if (target.tagName === 'DIV' && target.className.includes('email-box')) return 'email box';
+      return 'text';
+    }
+  
+    // Log view events
+    window.addEventListener('DOMContentLoaded', () => {
+      const timestamp = new Date().toISOString();
+      console.log(`${timestamp}, view, page loaded`);
+    });
+  
+    // Log click events
+    document.addEventListener('click', (e) => {
+      const timestamp = new Date().toISOString();
+      const type = getEventObjectType(e.target);
+      console.log(`${timestamp}, click, ${type}`);
+    });
+  </script>
+
+  <section class="text-analyzer">
+  <h2>Text Analyzer</h2>
+  <textarea class="analyzer-input" placeholder="Enter your text here..."></textarea>
+  <button class="analyze-btn">Analyze</button>
+  <div class="analysis-results" id="analysisOutput">
+    <!-- Output will be dynamically inserted here -->
+  </div>
+</section>
+
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const analyzeBtn = document.querySelector('.analyze-btn');
+    const input = document.querySelector('.analyzer-input');
+    const output = document.getElementById('analysisOutput');
+  
+    analyzeBtn.addEventListener('click', () => {
+      const text = input.value.trim().toLowerCase();
+  
+      if (!text) {
+        output.innerHTML = `<span>No input provided.</span>`;
+        return;
+      }
+  
+      // Basic stats
+      const words = text.match(/\b\w+\b/g) || [];
+      const wordCount = words.length;
+      const sentenceCount = (text.match(/[.!?]+/g) || []).length;
+      const charCount = text.replace(/\s/g, '').length;
+      const paragraphCount = text.split(/\n+/).filter(p => p.trim().length > 0).length;
+      const avgWordLength = wordCount > 0 ? (charCount / wordCount).toFixed(2) : 0;
+  
+      // === GROUP DEFINITIONS ===
+      const pronouns = ["i", "me", "you", "he", "him", "she", "her", "it", "we", "us", "they", "them", "my", "your", "his", "her", "its", "our", "their", "mine", "yours", "hers", "ours", "theirs"];
+      const prepositions = ["in", "on", "at", "by", "for", "with", "about", "against", "between", "into", "through", "during", "before", "after", "above", "below", "to", "from", "up", "down", "off", "over", "under"];
+      const articles = ["a", "an"];
+  
+      const countTokens = (groupList) => {
+        const counts = {};
+        for (let word of words) {
+          if (groupList.includes(word)) {
+            counts[word] = (counts[word] || 0) + 1;
+          }
+        }
+        return counts;
+      };
+  
+      const pronounCounts = countTokens(pronouns);
+      const prepositionCounts = countTokens(prepositions);
+      const articleCounts = countTokens(articles);
+  
+      const formatGroupCounts = (groupName, counts) => {
+        const entries = Object.entries(counts);
+        if (entries.length === 0) return `<div><strong><span>${groupName}:</span></strong> None found.</div>`;
+        return `
+          <div><strong><span>${groupName}:</span></strong></div>
+          <ul>${entries.map(([k, v]) => `<li>${k} — ${v}</li>`).join('')}</ul>
+        `;
+      };
+  
+      // === OUTPUT ===
+      output.innerHTML = `
+        <div><span>Words:</span> ${wordCount}</div>
+        <div><span>Sentences:</span> ${sentenceCount}</div>
+        <div><span>Characters (no spaces):</span> ${charCount}</div>
+        <div><span>Paragraphs:</span> ${paragraphCount}</div>
+        <div><span>Average Word Length:</span> ${avgWordLength} characters</div>
+        <hr>
+        ${formatGroupCounts('Pronouns', pronounCounts)}
+        ${formatGroupCounts('Prepositions', prepositionCounts)}
+        ${formatGroupCounts('Indefinite Articles', articleCounts)}
+      `;
+    });
+  });
+  </script>
+  
+  
+  
+  
 </body>
 </html>
