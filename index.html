@@ -344,7 +344,7 @@
             const timestamp = new Date().toISOString();
             const type = getEventObjectType(entry.target);
             console.log(`${timestamp}, view, ${type}`);
-            observer.unobserve(entry.target); // log only first view
+            // DO NOT unobserve — keep tracking it
           }
         });
       }, {
@@ -365,6 +365,7 @@
     });
   </script>
   
+  
   <section class="text-analyzer">
   <h2>Text Analyzer</h2>
   <textarea class="analyzer-input" placeholder="Enter your text here..."></textarea>
@@ -373,35 +374,33 @@
     <!-- Output will be dynamically inserted here -->
   </div>
 </section>
-
-
 <script>
   document.addEventListener('DOMContentLoaded', () => {
     const analyzeBtn = document.querySelector('.analyze-btn');
     const input = document.querySelector('.analyzer-input');
     const output = document.getElementById('analysisOutput');
-  
+
     analyzeBtn.addEventListener('click', () => {
       const text = input.value.trim().toLowerCase();
-  
+
       if (!text) {
         output.innerHTML = `<span>No input provided.</span>`;
         return;
       }
-  
+
       // Basic stats
       const words = text.match(/\b\w+\b/g) || [];
       const wordCount = words.length;
-      const sentenceCount = (text.match(/[.!?]+/g) || []).length;
+      const newlineCount = (text.match(/\n/g) || []).length;
       const charCount = text.replace(/\s/g, '').length;
       const paragraphCount = text.split(/\n+/).filter(p => p.trim().length > 0).length;
-      const avgWordLength = wordCount > 0 ? (charCount / wordCount).toFixed(2) : 0;
-  
+      const specialSymbolCount = (text.match(/[^a-z0-9\s]/gi) || []).length;
+
       // === GROUP DEFINITIONS ===
       const pronouns = ["i", "me", "you", "he", "him", "she", "her", "it", "we", "us", "they", "them", "my", "your", "his", "her", "its", "our", "their", "mine", "yours", "hers", "ours", "theirs"];
       const prepositions = ["in", "on", "at", "by", "for", "with", "about", "against", "between", "into", "through", "during", "before", "after", "above", "below", "to", "from", "up", "down", "off", "over", "under"];
       const articles = ["a", "an"];
-  
+
       const countTokens = (groupList) => {
         const counts = {};
         for (let word of words) {
@@ -411,11 +410,11 @@
         }
         return counts;
       };
-  
+
       const pronounCounts = countTokens(pronouns);
       const prepositionCounts = countTokens(prepositions);
       const articleCounts = countTokens(articles);
-  
+
       const formatGroupCounts = (groupName, counts) => {
         const entries = Object.entries(counts);
         if (entries.length === 0) return `<div><strong><span>${groupName}:</span></strong> None found.</div>`;
@@ -424,14 +423,14 @@
           <ul>${entries.map(([k, v]) => `<li>${k} — ${v}</li>`).join('')}</ul>
         `;
       };
-  
+
       // === OUTPUT ===
       output.innerHTML = `
         <div><span>Words:</span> ${wordCount}</div>
-        <div><span>Sentences:</span> ${sentenceCount}</div>
+        <div><span>Newlines:</span> ${newlineCount}</div>
         <div><span>Characters (no spaces):</span> ${charCount}</div>
         <div><span>Paragraphs:</span> ${paragraphCount}</div>
-        <div><span>Average Word Length:</span> ${avgWordLength} characters</div>
+        <div><span>Special Symbols:</span> ${specialSymbolCount}</div>
         <hr>
         ${formatGroupCounts('Pronouns', pronounCounts)}
         ${formatGroupCounts('Prepositions', prepositionCounts)}
@@ -439,7 +438,7 @@
       `;
     });
   });
-  </script>
+</script>
   
   
   
