@@ -322,9 +322,7 @@
       });
     });
   </script>
-
   <script>
-    // Helper to get event type (text, image, button, etc.)
     function getEventObjectType(target) {
       if (target.tagName === 'IMG') return 'image';
       if (target.tagName === 'A') return 'link';
@@ -334,20 +332,39 @@
       return 'text';
     }
   
-    // Log view events
+    // Log page load
     window.addEventListener('DOMContentLoaded', () => {
       const timestamp = new Date().toISOString();
       console.log(`${timestamp}, view, page loaded`);
+  
+      // Set up view tracking for visible elements
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const timestamp = new Date().toISOString();
+            const type = getEventObjectType(entry.target);
+            console.log(`${timestamp}, view, ${type}`);
+            observer.unobserve(entry.target); // log only first view
+          }
+        });
+      }, {
+        threshold: 0.5, // fire when 50% visible
+      });
+  
+      // Observe all relevant elements
+      document.querySelectorAll('img, a, button, input, textarea, .email-box, p, span, h1, h2, h3, h4, h5, h6').forEach(el => {
+        observer.observe(el);
+      });
     });
   
-    // Log click events
+    // Log clicks
     document.addEventListener('click', (e) => {
       const timestamp = new Date().toISOString();
       const type = getEventObjectType(e.target);
       console.log(`${timestamp}, click, ${type}`);
     });
   </script>
-
+  
   <section class="text-analyzer">
   <h2>Text Analyzer</h2>
   <textarea class="analyzer-input" placeholder="Enter your text here..."></textarea>
